@@ -1,0 +1,44 @@
+.whatsapp-button {
+  display: inline-block;
+  background-color: #25D366; /* Color verde de WhatsApp */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none; /* Elimina el subrayado del enlace */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Efecto de transición suave */
+}
+
+.whatsapp-button:hover {
+  background-color: #1DA851; /* Color más oscuro al pasar el mouse */
+}
+
+.whatsapp-button i {
+  margin-right: 5px; /* Espacio entre el icono y el texto */
+}
+
+
+.precio-venta {
+
+  /* Otros estilos específicos para 'venta' */
+}
+
+.precio-off {
+
+  text-decoration: line-through;
+  /* Otros estilos específicos para 'off' */
+}
+
+.precio-especial {
+  color: blue;
+  font-weight: bold;
+  /* Otros estilos específicos para 'especial' */
+}
+
+.precio-mayor {
+  color: orange;
+  font-style: italic;
+  /* Otros estilos específicos para 'mayor' */
+}

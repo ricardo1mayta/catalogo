@@ -1,0 +1,118 @@
+<div class="pt-32 bg-white">
+  <h1 class="text-2xl font-bold text-center text-gray-800">
+    Catálogo de productos
+  </h1>
+</div>
+
+<!-- Tab Menu -->
+<div
+  class="items-center justify-center space-x-6 md:flex"
+  style="padding: 15px"
+>
+  <div class="relative w-full max-w-md focus-within:shadow-sm">
+    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+      <svg
+        class="w-5 h-5 text-gray-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"
+        />
+      </svg>
+    </span>
+    <input
+      type="search"
+      name="search"
+      class="block w-full px-3 py-2 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+      placeholder="Buscar..."
+      [(ngModel)]="searchTerm"
+      (input)="searchProducts(searchTerm)"
+    />
+  </div>
+</div>
+<!-- Product List -->
+
+<div
+  class="grid max-w-6xl grid-cols-1 gap-6 p-6 mx-auto sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+>
+  <div
+    *ngIf="filteredProducts.length <= 0"
+    class="w-full max-w-sm p-4 mx-auto border border-blue-300 rounded-md shadow"
+  >
+    <div class="flex space-x-4 animate-pulse">
+      <div class="w-10 h-10 rounded-full bg-slate-700"></div>
+      <div class="flex-1 py-1 space-y-6">
+        <div class="h-2 rounded bg-slate-700"></div>
+        <div class="space-y-3">
+          <div class="grid grid-cols-3 gap-4">
+            <div class="h-2 col-span-2 rounded bg-slate-700"></div>
+            <div class="h-2 col-span-1 rounded bg-slate-700"></div>
+          </div>
+          <div class="h-2 rounded bg-slate-700"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @for (item of filteredProducts; track $index) {
+
+  <article
+    class="p-3 duration-300 bg-white shadow-lg rounded-xl hover:shadow-xl hover:transform hover:scale-105"
+  >
+    <a [href]="'/producto/' + item.slug">
+      <div
+        class="relative flex items-end overflow-hidden rounded-xl img-container"
+      >
+        <img
+          src="{{ item.images[0] }}"
+          alt="Hotel Photo"
+          class="product-image__img"
+        />
+      </div>
+
+      <div class="p-2 mt-1">
+        <div style="height: 60px">
+          <h2 class="text-slate-700">{{ item.name }}</h2>
+        </div>
+
+        <p class="mt-1 text-sm text-slate-400">Vistas:{{ item.vistas }}</p>
+        <div class="flex items-end justify-center mt-3">
+          @if (item.badges.includes('off')) {
+          <p class="font-semibold text-red-600 text-1xl recio-off">
+            S/.{{ rdon(item.price + item.price * 0.08) }}-
+          </p>
+
+          }
+          <p class="text-3xl font-semibold">S/. {{ rdon(item.price) }}</p>
+        </div>
+
+        <div class="flex items-end justify-center mt-3">
+          <a
+            [href]="
+              'https://wa.me/' +
+              numerotel +
+              '?text=Hola,%20Por%20Mayor%20me%20interesa%20el%20producto%20' +
+              item.name +
+              'S/.' +
+              item.price
+            "
+            target="_blank"
+            class="whatsapp-button"
+          >
+            <i class="fab fa-whatsapp"></i>
+            Comprar
+          </a>
+        </div>
+      </div>
+    </a>
+  </article>
+  }
+</div>
+
+<!-- Pagination -->

@@ -1,0 +1,116 @@
+<div class="pt-32 bg-white"></div>
+
+<div
+  *ngIf="!product"
+  class="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto"
+>
+  <div class="animate-pulse flex space-x-4">
+    <div class="rounded-full bg-slate-700 h-10 w-10"></div>
+    <div class="flex-1 space-y-6 py-1">
+      <div class="h-2 bg-slate-700 rounded"></div>
+      <div class="space-y-3">
+        <div class="grid grid-cols-3 gap-4">
+          <div class="h-2 bg-slate-700 rounded col-span-2"></div>
+          <div class="h-2 bg-slate-700 rounded col-span-1"></div>
+        </div>
+        <div class="h-2 bg-slate-700 rounded"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="product" class="flex flex-wrap items-center">
+  <div class="w-full px-4 ml-auto mr-auto md:w-4/12">
+    <img
+      alt="..."
+      class="max-w-full rounded-lg shadow-lg"
+      src="{{ this.product?.images[0] }}"
+    />
+  </div>
+  <div class="w-full px-4 ml-auto mr-auto md:w-6/12">
+    <div class="md:pr-12">
+      <h3 class="text-3xl font-semibold">{{ product.name }}</h3>
+
+      <ul class="mt-6 list-none">
+        <li class="py-2">
+          <div class="flex items-center">
+            <div>
+              <i
+                class="inline-block px-2 py-1 mr-3 text-xs font-semibold text-yellow-50 uppercase bg-black rounded-full"
+                ><i class="fab fa-spin fa-2x">☻</i></i
+              >
+            </div>
+            <div>
+              <h4 class="text-blueGray-500">Vistas:{{ product.vistas }}</h4>
+            </div>
+          </div>
+          @if (product.badges.includes('off')) {
+          <h3 class="text-2xl text-sm text-red-600 precio-off">
+            S/.{{ rdon(product.price + product.price * 0.08) }}
+          </h3>
+
+          }
+          <h3 class="text-3xl">S/. {{ rdon(product.price) }}</h3>
+
+          <div
+            class="mt-6 list-none"
+            [innerHTML]="product.attributes.name"
+          ></div>
+          <br />
+          <div class="flex items-center">
+            <a
+              [href]="
+                'https://wa.me/' +
+                numerotel +
+                '?text=Hola,%20me%20interesa%20el%20producto%20' +
+                product.name +
+                'S/.' +
+                product.price
+              "
+              target="_blank"
+              class="whatsapp-button"
+            >
+              <i class="fab fa-whatsapp"></i>
+              Comprar
+            </a>
+          </div>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <span
+              class="box-decoration-slice bg-gradient-to-r from-indigo-600 to-orange-400 text-white px-2 ..."
+            >
+              Productos garantizados - Nuestra garantía cubre cualquier fallo de
+              fábrica del producto y lo reemplaza por uno nuevo si se lo
+              requiere.
+            </span>
+            <br />
+          </div>
+          <br />
+        </li>
+
+        <li>
+          <div class="flex items-center">
+            <span
+              class="box-decoration-slice bg-gradient-to-r from-indigo-600 to-green-400 text-white px-2 ..."
+            >
+              Compras seguras SSL - Pague con transferencias bancarias, Yape,
+              Plim y pagos en efectivo contra entrega.
+            </span>
+          </div>
+          <br />
+        </li>
+        <li>
+          <div class="flex items-center">
+            <span
+              class="box-decoration-slice bg-gradient-to-r from-indigo-600 to-pink-500 text-white px-2 ..."
+            >
+              Envíos a todo el Perú - Reciba su pedido en menos de 24 horas.
+              Envíos al resto del país por Olva Courier y Agencia Shalon.
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="pt-32 bg-white"></div>

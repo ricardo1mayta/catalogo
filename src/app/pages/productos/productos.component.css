@@ -1,0 +1,97 @@
+.whatsapp-button {
+  display: inline-block;
+  background-color: #25D366; /* Color verde de WhatsApp */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none; /* Elimina el subrayado del enlace */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Efecto de transición suave */
+}
+
+.whatsapp-button:hover {
+  background-color: #1DA851; /* Color más oscuro al pasar el mouse */
+}
+
+.whatsapp-button i {
+  margin-right: 5px; /* Espacio entre el icono y el texto */
+}
+
+
+
+.precio-venta {
+
+}
+
+.precio-off {
+
+  text-decoration: line-through;
+  /* Otros estilos específicos para 'off' */
+}
+
+.precio-especial {
+  color: blue;
+  font-weight: bold;
+  /* Otros estilos específicos para 'especial' */
+}
+
+.precio-mayor {
+  color: orange;
+  font-style: italic;
+  /* Otros estilos específicos para 'mayor' */
+}
+.img-container {
+  width: 100%;
+  max-width: 200px; /* Ajusta según tu diseño */
+  height: 220px; /* Ajusta según tu diseño */
+  background-color: #f0f0f0; /* Opcional: fondo para ver el contenedor */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 15px; /* Asegura que las esquinas estén redondeadas */
+  margin-bottom: 15px; /* Espacio entre contenedores */
+}
+
+.product-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+  object-position: center; /* Centra la imagen dentro del contenedor */
+}
+.img-container {
+  /* ... otros estilos ... */
+  overflow: hidden; /* Oculta el contenido que excede el contenedor */
+  width:  100%;
+}
+
+.product-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+  object-position: center; /* Centra la imagen dentro del contenedor */
+  transition: filter 0.3s ease; /* Transición suave para el filtro */
+}
+
+.img-container:hover .product-image__img {
+  filter: invert(20%); /* Aplica filtro de negativo cuando se pasa el mouse sobre el contenedor */
+}
+
+
+/* Media query para pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+  .img-container {
+      max-width: 100%; /* Permite que el contenedor ocupe todo el ancho disponible en móviles */
+      height: auto; /* Ajusta la altura automáticamente */
+  }
+
+  .product-image__img {
+      width: 100%;
+      height: auto; /* Mantén la relación de aspecto */
+      object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+      object-position: center; /* Centra la imagen dentro del contenedor */
+  }
+}

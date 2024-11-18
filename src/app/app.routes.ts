@@ -12,44 +12,32 @@ import { RedireccionComponent } from './pages/redireccion/redireccion.component'
 import { DetalleUsuariosComponent } from './pages/detalle-usuarios/detalle-usuarios.component';
 import { ErrorHandler, inject } from '@angular/core';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ProductosComponent } from './pages/productos/productos.component';
+import { ProductoComponent } from './pages/productos/producto/producto.component';
+import { NosotrosComponent } from './pages/nosotros/nosotros.component';
+import { ContactoComponent } from './pages/contacto/contacto.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
   {
-    path: 'signals',
+    path: '',
+    component: HomeComponent,
     children: [
       {
-        path: 'inputs', component: InputComponent
+        path: '',
+        component: ProductosComponent,
       },
       {
-        path: 'outputs', component: OutputComponent
+        path: 'producto/:id',
+        component: ProductoComponent,
       },
       {
-        path: 'queries', component: QueriesComponent
+        path: 'nosotros',
+        component: NosotrosComponent,
       },
       {
-        path: 'model-inputs', component: ModelInputsComponent
+        path: 'contacto',
+        component: ContactoComponent,
       },
-    ]
+    ],
   },
-  { path: 'content', component: ContentComponent },
-  { path: 'optimized-image', component: OptimizedImageComponent },
-  { path: 'defer', component: DeferComponent },
-  { path: 'forms', component: FormsComponent },
-  { path: 'redireccion', component: RedireccionComponent },
-  {
-    path: 'detalle-anterior/:id', redirectTo: ({ params }) => {
-      const errorHandler = inject(ErrorHandler);
-      const userIdParam = params['id'];
-      if (userIdParam != 3) {
-        return `/detalle-usuario/${userIdParam}`;
-      } else {
-        errorHandler.handleError(new Error('Attempted navigation to user page without user ID.'));
-        return `/not-found`;
-      }
-    },
-  },
-  { path: 'detalle-usuario/:id', component: DetalleUsuariosComponent },
-  { path: 'not-found', component: NotFoundComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
